@@ -12,7 +12,8 @@ import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    Switch cesar,vigenere,playfair,hill,homophone,transposition,delastelle,des;//,methode;
+    // Eléments de l'interface graphique
+    Switch cesar,vigenere,playfair,hill,homophone,transposition,delastelle,des;
     ToggleButton methode;
     EditText message,cle,resultat, cle2, int1, int2, int3, int4;
     int test;
@@ -463,7 +464,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    //--DES--//
                 }
             }
         } else {
