@@ -278,7 +278,7 @@ public class PlayfairCipher {
                                     j--;
 
                                 } else if(!caracPolybe.isEmpty() && caracPolybe.contains('j')){
-                                    int posOfJ = positionPolybe.get(caracPolybe.indexOf("j"));
+                                    int posOfJ = positionPolybe.get(caracPolybe.indexOf('j'));
                                     positionPolybe.add(posOfJ);
                                     caracPolybe.add('j');
 
