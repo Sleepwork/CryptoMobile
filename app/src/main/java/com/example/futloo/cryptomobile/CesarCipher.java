@@ -30,7 +30,7 @@ public class CesarCipher {
         //Initialiation du msg à retourner
         String newMsg = "";
 
-        //Pour chaque caractère
+        // Pour chaque caractère
         for(int i = 0; i<msg.length(); i++){
 
             // Récupération du caractère et différence avec 32

@@ -154,6 +154,7 @@ public class HillCipher {
         // StringBuffer qui permettra de formatter le msg et de le recupérer
         StringBuffer result = new StringBuffer();
 
+        // Si le message n'est ni vide ni nul
         if(!formatMsg.isEmpty() && formatMsg.length() != 0) {
             // Variable qui permettra de vérifier l'existence d'un carac. spécial
             int index;

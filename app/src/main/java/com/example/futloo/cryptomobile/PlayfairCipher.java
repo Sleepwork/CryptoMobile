@@ -478,7 +478,7 @@ public class PlayfairCipher {
         // StringBuffer qui permettra de formatter le msg et de le recupérer
         StringBuffer result = new StringBuffer();
 
-        // Si le message n'est pas vide ou nul
+        // Si le message n'est ni vide ni nul
         if(!msg.isEmpty() && msg.length() != 0) {
             // Variable qui permettra de vérifier l'existence d'un carac. spécial
             int index;
