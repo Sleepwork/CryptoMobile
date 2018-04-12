@@ -17,8 +17,8 @@ public class RectangularTranspoCipher {
     *  La position sera écrite comme pour une matrice (ex: 1,2) en enlevant la virgule (ex: 12)
     *  Utilisation de l'index du tableau comme clé pour trouver l'un à partir de l'autre
     */
-    private static ArrayList<Integer> codeRect;
-    private static ArrayList<Character> codeDerect;
+    private static ArrayList<Integer> positionRect;
+    private static ArrayList<Character> caracRect;
 
     // Fonction main pour test sous java
     /*public static void main(String[] args){
@@ -41,6 +41,7 @@ public class RectangularTranspoCipher {
     // Fonction de chiffrement/déchiffrement avec la transposition rectangulaire
     public static String transpoRect(String msg, String cle, boolean code){
 
+        // Variable qui contiendra le msg chiffré/déchiffré
         String newMsg = "";
 
         // Tableau indiquant la position des caractères de la clé par ordre alphabétique
@@ -89,9 +90,9 @@ public class RectangularTranspoCipher {
                         int pos = j * 10 + colPos.get(doublon);
 
                         // Vérification nécessaire en cas de ligne supplémentaire
-                        if(codeRect.contains(pos)){
-                            int index = codeRect.indexOf(pos);
-                            newMsg += codeDerect.get(index);
+                        if(positionRect.contains(pos)){
+                            int index = positionRect.indexOf(pos);
+                            newMsg += caracRect.get(index);
                         }
 
                     }
@@ -209,8 +210,8 @@ public class RectangularTranspoCipher {
     private static void createRect(String msg, int nbCol){
 
         // Initialisation du rectangle de transpo.
-        codeRect = new ArrayList<>();
-        codeDerect = new ArrayList<>();
+        positionRect = new ArrayList<>();
+        caracRect = new ArrayList<>();
 
         // Initialisation de la variable qui contiendra chaque carac. du msg
         char ascii;
@@ -231,8 +232,8 @@ public class RectangularTranspoCipher {
                 pos = 11 + i;
 
             // Ajout de la position et du caractère dans le "rectangle"
-            codeRect.add(pos);
-            codeDerect.add(ascii);
+            positionRect.add(pos);
+            caracRect.add(ascii);
         }
 
     }
@@ -242,7 +243,7 @@ public class RectangularTranspoCipher {
 
         // Récupération de la longueur du msg et de la clé
         int nbCol = cle.length();
-        int msgLength = codeRect.size();
+        int msgLength = positionRect.size();
 
         // Variable qui contiendra le contenu d'une ligne
         String print = "";
@@ -274,7 +275,7 @@ public class RectangularTranspoCipher {
                 print = "";
             }
 
-            print += Character.toString(codeDerect.get(i)) + " ";
+            print += Character.toString(caracRect.get(i)) + " ";
         }
 
         Log.i("RectangularTranspo", "Show over.");
