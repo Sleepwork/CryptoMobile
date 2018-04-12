@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.futloo.cryptomobile.MainActivity">-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <Switch
+                    android:id="@+id/sTransposition"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:text="Transposition" />
+
+                <Switch
+                    android:id="@+id/sDelastelle"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:text="Delastelle" />
+
+                <Switch
+                    android:id="@+id/sHomophone"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:text="Homophonique" />
+
+                <Switch
+                    android:id="@+id/sHill"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:text="Hill" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <Switch
+                    android:id="@+id/sDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:text="DES" />
+
+                <Switch
+                    android:id="@+id/sCesar"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:text="César" />
+
+                <Switch
+                    android:id="@+id/sVigenere"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:text="Vigenère" />
+
+                <Switch
+                    android:id="@+id/sPlayfair"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:text="Playfair" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <ToggleButton
+                    android:id="@+id/tbtnMethode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="ToggleButton" />
+
+                <TextView
+                    android:id="@+id/tv_Message"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Quel est votre message?"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+                <EditText
+                    android:id="@+id/et_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Message..."
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/tv_clé"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Quel est votre clé?"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+                <EditText
+                    android:id="@+id/et_clé"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Mot..."
+                    android:maxLength="128"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/et_clé2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Entier..."
+                    android:inputType="numberSigned"
+                    android:maxLength="3"
+                    android:singleLine="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_int1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="1,1"
+                    android:inputType="numberSigned"
+                    android:maxLength="3"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/et_int2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="1,2"
+                    android:inputType="numberSigned"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/et_int3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="2,1"
+                    android:inputType="numberSigned"
+                    android:maxLength="3"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/et_int4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="2,2"
+                    android:inputType="numberSigned"
+                    android:maxLength="3"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_ok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:elevation="1dp"
+                    android:onClick="DoSomething"
+                    android:text="OK" />
+
+                <EditText
+                    android:id="@+id/et_resultat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:editable="false"
+                    android:ems="10"
+                    android:hint="Résultat..." />
+
+            </LinearLayout>
+
+            <!--<Switch
+            android:id="@+id/sMethode"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/sDes"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Méthode" />-->
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
