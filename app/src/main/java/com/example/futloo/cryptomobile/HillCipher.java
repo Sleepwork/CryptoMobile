@@ -71,10 +71,12 @@ public class HillCipher {
                 // Récupération de leur ascii
                 int firstCharPos = firstChar;
                 int secondCharPos = secondChar;
+
+                // Décrémentation pour travailler sur 0-94
                 firstCharPos -= decalage;
                 secondCharPos -= decalage;
 
-                // Calcul de y1 et y2
+                // Calcul des carac. chiffrés
                 int yFirst = firstCharPos * a + secondCharPos * b;
                 int ySecond = firstCharPos * c + secondCharPos * d;
 
@@ -105,24 +107,31 @@ public class HillCipher {
 
             // Pour chaque couple de carac.
             for(int i = 0; i<msg.length(); i+=2){
+                // Récupération du couple
                 char firstChar = msg.charAt(i);
                 char secondChar = msg.charAt(i+1);
+
+                // Récupération de leur ascii
                 int firstCharPos = firstChar;
                 int secondCharPos = secondChar;
 
+                // Décrémentation pour travailler sur 0-94
                 firstCharPos -= decalage;
                 secondCharPos -= decalage;
 
-
+                // Calcul des carac. déchiffrés
                 int xFirst = firstCharPos * invA + secondCharPos * invB;
                 int xSecond = firstCharPos * invC + secondCharPos * invD;
 
+                // Modulo 'mod' et incrémentation par décalage pour obtenir l'ascii correct
                 xFirst = (xFirst % mod) + decalage;
                 xSecond = (xSecond % mod) + decalage;
 
+                // Récupération des caractères chiffrés
                 char xFirstChar = (char) xFirst;
                 char xSecondChar = (char) xSecond;
 
+                // Concaténation des caractères déchiffrés
                 newMsg += "" + xFirstChar + xSecondChar;
             }
         }
@@ -130,40 +139,61 @@ public class HillCipher {
         return newMsg;
     }
 
-    //https://www.quennec.fr/trucs-astuces/langages/java/remplacer-les-caract%C3%A8res-accentu%C3%A9s-dune-chaine-par-des-caract%C3%A8res-simples
+    // Fonction de formattage d'un msg pour utiliser hill
     private static String formatHill(String msg){
+        // Caractère à ajouter si la longueur du msg est impaire
         char oddChar = 'x';
+
+        // Variable qui contiendra le msg formatté
         String formatMsg = msg;
 
+        // Si le msg n'a pas une longueur paire, on rajoute 'oddChar'
         if(formatMsg.length()%2==1)
             formatMsg += oddChar;
 
+        // StringBuffer qui permettra de formatter le msg et de le recupérer
         StringBuffer result = new StringBuffer();
 
-        if(!formatMsg.isEmpty() && formatMsg.length()!=0) {
+        if(!formatMsg.isEmpty() && formatMsg.length() != 0) {
+            // Variable qui permettra de vérifier l'existence d'un carac. spécial
             int index;
+
+            // Variable pour le carac. et sa valeur ascii
             char c;
+            int ascii;
+
+            // Carac. spéciaux et leur remplacement
             String chars= "àâäéèêëîïôöùûüç";
             String replace= "aaaeeeeiioouuuc";
 
+            /* Pour chaque carac.,
+             * Si c'est un carac. spécial on prend son remplacement
+             * Sinon on ajoute le carac. s'il s'agit d'une lettre
+             */
             for(int i=0; i<formatMsg.length(); i++) {
                 c = formatMsg.charAt(i);
+                ascii = c;
 
                 if( (index=chars.indexOf(c))!=-1 )
                     result.append(replace.charAt(index));
-                else
+                else if(96 < ascii && ascii < 127)
                     result.append(c);
             }
         }
 
+        // Récupération du msg formatté
         formatMsg = result.toString();
+
         return formatMsg;
     }
 
     //Fonction pour exécuter le modulo (normal + sur nombre négatif)
     private static int modulo(int x, int mod){
+
+        // Modulo fonctionnant sur nombres positifs
         x = x%mod;
 
+        // Simulation d'un modulo sur nombres négatifs
         while(x<0)
             x += mod;
 
@@ -172,12 +202,18 @@ public class HillCipher {
 
     //Fonction pour calculer l'inverse modulo 'mod' du déterminant
     private static int invDet(int determinant, int mod){
-        int invDeterminant = 1;
-        int cong = modulo(determinant, mod);
 
-        while(cong != 1 && invDeterminant < 100){
+        // Initialisation de l'inverse
+        int invDeterminant = 1;
+
+        // Variable contenant le résultat du modulo (reste de la division)
+        int reste = modulo(determinant, mod);
+
+        // Tant que ce reste n'est pas égal à 1 (l'inverse)
+        // On incrémente 'invDeterminant'
+        while(reste != 1 && invDeterminant < 100){
             invDeterminant++;
-            cong = modulo(determinant*invDeterminant, mod);
+            reste = modulo(determinant*invDeterminant, mod);
         }
 
         return invDeterminant;

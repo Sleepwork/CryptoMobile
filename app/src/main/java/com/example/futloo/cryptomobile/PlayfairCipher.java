@@ -68,8 +68,8 @@ public class PlayfairCipher {
                 char secondChar = msg.charAt(i+1);
 
                 // Récupération de leur position dans le carré de playfair
-                int posFirst = positionPlayfair.get(caracPlayfair.indexOf(""+firstChar));
-                int posSecond = positionPlayfair.get(caracPlayfair.indexOf(""+secondChar));
+                int posFirst = positionPlayfair.get(caracPlayfair.indexOf(firstChar));
+                int posSecond = positionPlayfair.get(caracPlayfair.indexOf(secondChar));
 
                 // Calcul de la position de la ligne et de la colonne de chacun
                 int colFirst = posFirst % 10;
@@ -124,8 +124,8 @@ public class PlayfairCipher {
                 char secondChar = msg.charAt(i+1);
 
                 // Récupération de leur position dans le carré de playfair
-                int posFirst = positionPlayfair.get(caracPlayfair.indexOf(""+firstChar));
-                int posSecond = positionPlayfair.get(caracPlayfair.indexOf(""+secondChar));
+                int posFirst = positionPlayfair.get(caracPlayfair.indexOf(firstChar));
+                int posSecond = positionPlayfair.get(caracPlayfair.indexOf(secondChar));
 
                 // Calcul de la position de la ligne et de la colonne de chacun
                 int colFirst = posFirst % 10;
@@ -254,12 +254,12 @@ public class PlayfairCipher {
                             if(lettre == 'j'){
 
                                 // Vérification de l'existence de la lettre j dans le carré
-                                if (!caracPolybe.isEmpty() && caracPolybe.contains("j")){
+                                if (!caracPolybe.isEmpty() && caracPolybe.contains('j')){
                                     j--;
 
-                                } else if(!caracPolybe.isEmpty() && caracPolybe.contains("i")){
+                                } else if(!caracPolybe.isEmpty() && caracPolybe.contains('i')){
                                 // Vérification de l'existence de sa lettre confondue i dans le carré
-                                    int posOfI = positionPolybe.get(caracPolybe.indexOf("i"));
+                                    int posOfI = positionPolybe.get(caracPolybe.indexOf('i'));
                                     positionPolybe.add(posOfI);
                                     caracPolybe.add('j');
 
@@ -274,12 +274,12 @@ public class PlayfairCipher {
                             // Sinon la lettre est la lettre i,
                             // alors on doit vérifier son existence ou bien celle de j
                             // Dans le cas où aucune des 2 lettres n'existent, on ajoute les 2
-                                if (!caracPolybe.isEmpty() && caracPolybe.contains("i")){
+                                if (!caracPolybe.isEmpty() && caracPolybe.contains('i')){
                                     j--;
 
-                                } else if(!caracPolybe.isEmpty() && caracPolybe.contains("j")){
-                                    int posOfI = positionPolybe.get(caracPolybe.indexOf("j"));
-                                    positionPolybe.add(posOfI);
+                                } else if(!caracPolybe.isEmpty() && caracPolybe.contains('j')){
+                                    int posOfJ = positionPolybe.get(caracPolybe.indexOf("j"));
+                                    positionPolybe.add(posOfJ);
                                     caracPolybe.add('j');
 
                                 } else {
@@ -460,7 +460,7 @@ public class PlayfairCipher {
         Log.i("Playfair", "Show over.");
     }
 
-    // Fonction de formattage d'un msg pour pouvoir utiliser playfair
+    // Fonction de formattage d'un msg pour utiliser playfair
     private static String formatPlayfair(String msg){
 
         // Variable qui contiendra le msg formatté
@@ -479,7 +479,7 @@ public class PlayfairCipher {
         StringBuffer result = new StringBuffer();
 
         // Si le message n'est pas vide ou nul
-        if(!msg.isEmpty() && msg.length()!=0) {
+        if(!msg.isEmpty() && msg.length() != 0) {
             // Variable qui permettra de vérifier l'existence d'un carac. spécial
             int index;
 

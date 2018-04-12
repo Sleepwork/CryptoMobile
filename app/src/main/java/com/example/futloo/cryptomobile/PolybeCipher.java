@@ -30,6 +30,75 @@ public class PolybeCipher {
 
     }*/
 
+    public static String polybe(String msg, String cle, boolean code){
+
+        msg = msg.toLowerCase();
+        cle = cle.toLowerCase();
+        constructPolybeSquare(cle);
+        showPolybeSquare();
+        Log.i("Polybe Cipher", "Polybe de: " +msg);
+
+        int pos = 0;
+        int ascii = 0;
+        String newMsg = "";
+
+        if(code){
+            for(int i = 0; i<msg.length(); i++){
+                ascii = msg.charAt(i);
+                if(96 < ascii && ascii < 123){
+                    String lettre = "" + msg.charAt(i);
+                    String lettreL = "";
+                    String lettreC = "";
+                    pos = codePolybe.get(codeDepolybe.indexOf(lettre));
+                    int unite = (pos % 10);
+                    int dizaine = (pos - unite)/10;
+                    int random = 0;
+
+                    do{
+                        random = (int) Math.ceil(Math.random()*5);
+                    }while(random == unite);
+
+                    lettreL = codeDepolybe.get(codePolybe.indexOf(dizaine*10+random));
+
+                    do{
+                        random = (int) Math.ceil(Math.random()*5);
+                    }while(random == dizaine);
+
+                    lettreC = codeDepolybe.get(codePolybe.indexOf(random*10+unite));
+                    newMsg += lettreL + lettreC;
+
+                } else {
+                    newMsg = newMsg + msg.charAt(i);
+                }
+            }
+
+        } else {
+            for(int i = 0; i<msg.length(); i+=2){
+                ascii = (int) msg.charAt(i);
+
+                if(96 < ascii && ascii < 123){
+                    char firstChar = msg.charAt(i);
+                    char secondChar = msg.charAt(i+1);
+
+                    int posFirst = codePolybe.get(codeDepolybe.indexOf(""+firstChar));
+                    int posSecond = codePolybe.get(codeDepolybe.indexOf(""+secondChar));
+
+                    int lineFirst = posFirst - (posFirst % 10);
+                    int colSecond = posSecond % 10;
+
+                    String lettre = codeDepolybe.get(codePolybe.indexOf(lineFirst + colSecond));
+                    newMsg += lettre;
+                } else {
+                    newMsg = newMsg + msg.charAt(i);
+                    i--;
+                }
+            }
+        }
+
+        return newMsg;
+    }
+
+
     private static void constructPolybeSquare(String cle){
         int ascii = 97;
         codePolybe = new ArrayList<Integer>();
@@ -148,75 +217,6 @@ public class PolybeCipher {
         }
 
         Log.i("Polybe Cipher", "Show over.");
-    }
-
-
-    public static String polybe(String msg, String cle, boolean code){
-
-        msg = msg.toLowerCase();
-        cle = cle.toLowerCase();
-        constructPolybeSquare(cle);
-        showPolybeSquare();
-        Log.i("Polybe Cipher", "Polybe de: " +msg);
-
-        int pos = 0;
-        int ascii = 0;
-        String newMsg = "";
-
-        if(code){
-            for(int i = 0; i<msg.length(); i++){
-                ascii = msg.charAt(i);
-                if(96 < ascii && ascii < 123){
-                    String lettre = "" + msg.charAt(i);
-                    String lettreL = "";
-                    String lettreC = "";
-                    pos = codePolybe.get(codeDepolybe.indexOf(lettre));
-                    int unite = (pos % 10);
-                    int dizaine = (pos - unite)/10;
-                    int random = 0;
-
-                    do{
-                        random = (int) Math.ceil(Math.random()*5);
-                    }while(random == unite);
-
-                    lettreL = codeDepolybe.get(codePolybe.indexOf(dizaine*10+random));
-
-                    do{
-                        random = (int) Math.ceil(Math.random()*5);
-                    }while(random == dizaine);
-
-                    lettreC = codeDepolybe.get(codePolybe.indexOf(random*10+unite));
-                    newMsg += lettreL + lettreC;
-
-                } else {
-                    newMsg = newMsg + msg.charAt(i);
-                }
-            }
-
-        } else {
-            for(int i = 0; i<msg.length(); i+=2){
-                ascii = (int) msg.charAt(i);
-
-                if(96 < ascii && ascii < 123){
-                    char firstChar = msg.charAt(i);
-                    char secondChar = msg.charAt(i+1);
-
-                    int posFirst = codePolybe.get(codeDepolybe.indexOf(""+firstChar));
-                    int posSecond = codePolybe.get(codeDepolybe.indexOf(""+secondChar));
-
-                    int lineFirst = posFirst - (posFirst % 10);
-                    int colSecond = posSecond % 10;
-
-                    String lettre = codeDepolybe.get(codePolybe.indexOf(lineFirst + colSecond));
-                    newMsg += lettre;
-                } else {
-                    newMsg = newMsg + msg.charAt(i);
-                    i--;
-                }
-            }
-        }
-
-        return newMsg;
     }
 
 }
