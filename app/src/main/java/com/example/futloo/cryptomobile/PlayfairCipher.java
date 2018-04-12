@@ -15,6 +15,7 @@ public class PlayfairCipher {
     private static ArrayList<Integer> codePlayfair;
     private static ArrayList<String> codeDeplayfair;
 
+    // Fonction main pour test sous java
     /*public static void main(String[] args){
 
         //Playfair
@@ -32,6 +33,7 @@ public class PlayfairCipher {
 
     }*/
 
+    // Fonction de chiffrement/déchiffrement avec playfair
     private static void constructPolybeSquare(String cle){
         int ascii = 97;
         codePolybe = new ArrayList<Integer>();
@@ -239,6 +241,7 @@ public class PlayfairCipher {
 
         String newMsg = "";
 
+        // Chiffrement ou déchiffrement
         if(code){
             for(int i = 0; i<msg.length(); i+=2){
 

@@ -12,9 +12,11 @@ import java.util.HashMap;
 
 public class RectangularTranspoCipher {
 
+    // Tableau caractère et position de celui-ci séparé en 2 ArrayList, utilisation de l'index comme clé
     private static ArrayList<Integer> codeRect;
     private static ArrayList<Character> codeDerect;
 
+    // Fonction main pour test sous java
     /*public static void main(String[] args){
 
         //Transposition rectangulaire
@@ -32,33 +34,57 @@ public class RectangularTranspoCipher {
 
     }*/
 
+    // Fonction de chiffrement/déchiffrement avec la transposition rectangulaire
     public static String transpoRect(String msg, String cle, boolean code){
 
         String newMsg = "";
+
+        // Tableau indiquant la position des caractères de la clé par ordre alphabétique
         HashMap<Character, Integer> hashmap = cleHashmap(cle);
+
+        // Longueur de la clé -> nb de colonne du rectangle
         int nbCol = cle.length();
 
+        // Chiffrement ou déchiffrement
         if(code){
+
+            // Création du rectangle pour la transposition
             createRect(msg, nbCol);
+
+            // Affiche une représentation du rectangle dans la console
             showRect(cle, hashmap);
             Log.i("RectangularTranspo", msg);
 
+            // Pour la colonne à prendre en i-ème
             for(int i = 1; i <= nbCol; i++){
                 ArrayList<Integer> colPos = new ArrayList<Integer>();
 
+                /* Recherche de l'identifiant de la colonne à prendre en i-ème
+                *  Si la clé possède plusieurs instances de la même lettre,
+                *  alors elles auront toutes la même position
+                *  Stockage dans un arraylist pour toutes les prendre en compte
+                */
                 for(int j = 0; j < nbCol ; j++){
                     if(hashmap.get(cle.charAt(j)) == i)
                         colPos.add(j + 1);
                 }
 
+                // Recherche du nombre de lignes associé à la colonne
                 int nbLignes = msg.length() / nbCol;
 
+                // Si la longueur du msg n'est pas divisible par la longueur de la clé,
+                // alors il existe une ligne supplémentaire
                 if(msg.length() % nbCol != 0)
                     nbLignes++;
 
+                // Pour chaque identifiant de colonne récupéré
                 for(int doublon = 0; doublon < colPos.size(); doublon++){
+
+                    // Récupération du caractère ligne par ligne
                     for(int j = 1; j <= nbLignes; j++){
                         int pos = j * 10 + colPos.get(doublon);
+
+                        // Vérification nécessaire en cas de ligne supplémentaire
                         if(codeRect.contains(pos)){
                             int index = codeRect.indexOf(pos);
                             newMsg += codeDerect.get(index);
@@ -69,12 +95,27 @@ public class RectangularTranspoCipher {
             }
 
         } else {
-            createRect("burn and ignite", nbCol);
+
+            // Création du rectangle pour la transposition
+            createRect(msg, nbCol);
+
+            // Affiche une représentation du rectangle dans la console
             showRect(cle, hashmap);
+
+            // Calcul de valeurs nécesaires dans la suite
+            // Longueur du msg
             int msgL = msg.length();
+
+            // Quotient de la division des longueurs du msg et de la clé
             int quotient = msgL / nbCol;
+
+            // Reste de la division des longueurs du msg et de la clé
             int reste = msgL % nbCol;
+
+            // Longueur actuelle du msg dechiffré
             int newMsgL = 0;
+
+            // Initialisation d'un tableau String qui contiendra le rectangle du msg déchiffré
             String[][] newMsgTab = new String[quotient+1][nbCol];
 
             for(int i = 0; i < quotient + 1; i++){
@@ -85,25 +126,39 @@ public class RectangularTranspoCipher {
 
             Log.i("RectangularTranspo", msg);
 
+            // Pour la colonne à prendre en i-ème
             for(int i = 1; i <= nbCol; i++){
                 ArrayList<Integer> colPos = new ArrayList<Integer>();
 
+                /* Recherche de l'identifiant de la colonne à prendre en i-ème
+                *  Si la clé possède plusieurs instances de la même lettre,
+                *  alors elles auront toutes la même position
+                *  Stockage dans un arraylist pour toutes les prendre en compte
+                */
                 for(int j = 0; j < nbCol ; j++){
                     if(hashmap.get(cle.charAt(j)) == i)
                         colPos.add(j);
                 }
 
+                // Pour chaque identifiant de colonne récupéré
                 for(int doublon = 0; doublon < colPos.size(); doublon++){
                     int nbLignes = quotient;
                     int pos = colPos.get(doublon);
 
+                    // Si la position est inférieur au reste, il y a une ligne supplémentaire
                     if(pos < reste)
                         nbLignes++;
 
+                    /* Reconstitution de la colonne du rectangle:
+                     *      Le contenu des colonnes a été écrit à la suite dans le msg chiffré
+                     *      Il faut donc prendre les suites de caractères du msg chiffré
+                     *      en considérant l'existence d'une ligne supplémentaire ou non
+                     */
                     for(int ligne = 0; ligne < nbLignes; ligne++){
                         newMsgTab[ligne][pos] =  "" + msg.charAt(ligne + newMsgL);
                     }
 
+                    // Incrémentation par le nombre de caractères ajoutés
                     newMsgL += nbLignes;
                 }
             }
@@ -117,6 +172,7 @@ public class RectangularTranspoCipher {
 
         return newMsg;
     }
+
 
     private static HashMap<Character, Integer> cleHashmap(String cle){
 

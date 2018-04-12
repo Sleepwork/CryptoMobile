@@ -6,6 +6,7 @@ package com.example.futloo.cryptomobile;
 
 public class CesarCipher {
 
+    // Fonction main pour test sous java
     /*public static void main(String[] args){
 
         //César
@@ -23,19 +24,29 @@ public class CesarCipher {
 
     }*/
 
+    // Fonction de chiffrement/déchiffrement avec césar
     public static String cesar(String msg, int decalage, boolean code){
+
+        //Initialiation du msg à retourner
         String newMsg = "";
 
+        //Pour chaque caractère
         for(int i = 0; i<msg.length(); i++){
+
+            // Récupération du caractère et différence avec 32
+            // (on ramène le 1er caractère de la table ascii à 0)
             char currentChar = msg.charAt(i);
             int ascii = (int) currentChar - 32;
 
+            // Chiffrement ou déchiffrement
             if(code){
 
+                // Incrémentation du caractère par le décalage donné modulo 95
                 ascii = ((ascii +  decalage) %95) + 32;
                 currentChar = (char) ascii;
 
             } else {
+                // Décrémentation du caractère par le décalage donné modulo 95
                 ascii = ascii -  decalage % 95;
 
                 while(ascii<0)
@@ -45,6 +56,7 @@ public class CesarCipher {
                 currentChar = (char) ascii;
             }
 
+            // Ajout du caractère dans le msg à retourner
             if((int) currentChar != 34 && (int) currentChar != 92)
                 newMsg = newMsg + currentChar;
             else

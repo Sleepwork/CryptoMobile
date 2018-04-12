@@ -9,6 +9,7 @@ import android.util.Log;
 
 public class HillCipher {
 
+    // Fonction main pour test sous java
     /*public static void main(String[] args){
 
         //Hill
@@ -24,6 +25,7 @@ public class HillCipher {
 
     }*/
 
+    // Fonction de chiffrement/déchiffrement avec hill
     public static String hill(String msg, int a, int b, int c, int d, boolean code){
         int determinant = a * d - b * c;
         boolean reversibility = true;
@@ -42,6 +44,7 @@ public class HillCipher {
         System.out.println(msg);
         String newMsg = "";
 
+        // Chiffrement ou déchiffrement
         if(code && reversibility){
             Log.i("Hill", "Matrice de chiffrement: " + a + " " + b + " " + c + " " + d);
 
