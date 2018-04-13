@@ -1,4 +1,9 @@
-// 34 00 11 52
+/*
+ * Projet Sécurité (cryptographie)
+ * ZANTARI Laurent  36005825
+ * FUTLOO Ayman     34001152
+ */
+
 package com.example.futloo.cryptomobile;
 
 import android.support.v7.app.AppCompatActivity;

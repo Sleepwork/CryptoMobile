@@ -2,8 +2,10 @@ package com.example.futloo.cryptomobile;
 
 import android.util.Log;
 
-/**
- * Created by Zanta on 08/04/2018.
+/*
+ * Projet Sécurité (cryptographie)
+ * ZANTARI Laurent  36005825
+ * FUTLOO Ayman     34001152
  */
 
 
