@@ -173,7 +173,7 @@ public class DelastelleCipher {
             int integer = codeDelastelle.get(i);
 
             // Concaténation du carac. à la ième position dans le carré de polybe avec le msg chiffré/déchiffré
-            newMsg += caracPolybe.get(positionPolybe.indexOf(integer));
+            newMsg += "" + caracPolybe.get(positionPolybe.indexOf(integer));
         }
 
         return newMsg;

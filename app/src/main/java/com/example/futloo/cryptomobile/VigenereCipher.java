@@ -57,10 +57,7 @@ public class VigenereCipher {
             }
 
             // Ajout du caractère dans le msg à retourner
-            if((int) currentChar != 34 && (int) currentChar != 92)
-                newMsg = newMsg + currentChar;
-            else
-                newMsg = newMsg + "\\" + currentChar;
+            newMsg += "" + currentChar;
         }
 
         return newMsg;

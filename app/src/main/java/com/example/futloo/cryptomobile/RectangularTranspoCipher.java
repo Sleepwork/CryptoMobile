@@ -92,7 +92,7 @@ public class RectangularTranspoCipher {
                         // Vérification nécessaire en cas de ligne supplémentaire
                         if(positionRect.contains(pos)){
                             int index = positionRect.indexOf(pos);
-                            newMsg += caracRect.get(index);
+                            newMsg += "" + caracRect.get(index);
                         }
 
                     }
@@ -171,7 +171,7 @@ public class RectangularTranspoCipher {
             // Reconstitution du msg à partir du rectangle
             for(int i = 0; i < quotient + 1; i++){
                 for(int j = 0; j < nbCol; j++){
-                    newMsg += newMsgTab[i][j];
+                    newMsg += "" + newMsgTab[i][j];
                 }
             }
         }

@@ -89,10 +89,10 @@ public class PolybeCipher {
                     char lettreC = caracPolybe.get(positionPolybe.indexOf(random*10+unite));
 
                     // Concaténation des 2 lettres aléatoires au msg chiffré
-                    newMsg += lettreL + lettreC;
+                    newMsg += "" + lettreL + lettreC;
 
                 } else {
-                    newMsg = newMsg + msg.charAt(i);
+                    newMsg = "" + newMsg + msg.charAt(i);
                 }
             }
 
@@ -124,10 +124,10 @@ public class PolybeCipher {
                     char lettre = caracPolybe.get(positionPolybe.indexOf(lineFirst + colSecond));
 
                     // Concaténation au msg dechiffré
-                    newMsg += lettre;
+                    newMsg += "" + lettre;
                 } else {
                 // Sinon on concatène et on analyse le prochain carac.
-                    newMsg = newMsg + msg.charAt(i);
+                    newMsg = "" + newMsg + msg.charAt(i);
                     i--;
                 }
             }

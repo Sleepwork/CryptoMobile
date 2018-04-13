@@ -82,7 +82,7 @@ public class PlayfairCipher {
                 if(colFirst != colSecond && lineFirst != lineSecond){
                     char first = caracPlayfair.get(positionPlayfair.indexOf(lineFirst + colSecond));
                     char second = caracPlayfair.get(positionPlayfair.indexOf(lineSecond + colFirst));
-                    newMsg += first + second;
+                    newMsg += "" + first + second;
 
                 } else if(colFirst == colSecond && lineFirst != lineSecond){
                 // Pas sur la même ligne, mais sur la même colonne
@@ -97,7 +97,7 @@ public class PlayfairCipher {
 
                     char first = caracPlayfair.get(positionPlayfair.indexOf(lineFirst + colFirst));
                     char second =  caracPlayfair.get(positionPlayfair.indexOf(lineSecond + colSecond));
-                    newMsg += first + second;
+                    newMsg += "" + first + second;
                 } else {
                 // Sur la même ligne, mais pas sur la même colonne
                 // On prend la lettre à droite
@@ -111,7 +111,7 @@ public class PlayfairCipher {
 
                     char first = caracPlayfair.get(positionPlayfair.indexOf(lineFirst + colFirst));
                     char second = caracPlayfair.get(positionPlayfair.indexOf(lineSecond + colSecond));
-                    newMsg += first + second;
+                    newMsg += "" + first + second;
                 }
             }
 
@@ -138,7 +138,7 @@ public class PlayfairCipher {
                 if(colFirst != colSecond && lineFirst != lineSecond){
                     char first = caracPlayfair.get(positionPlayfair.indexOf(lineFirst + colSecond));
                     char second = caracPlayfair.get(positionPlayfair.indexOf(lineSecond + colFirst));
-                    newMsg += first + second;
+                    newMsg += "" + first + second;
 
                 } else if(colFirst == colSecond && lineFirst != lineSecond){
                 // Pas sur la même ligne, mais sur la même colonne
@@ -153,7 +153,7 @@ public class PlayfairCipher {
 
                     char first = caracPlayfair.get(positionPlayfair.indexOf(lineFirst + colFirst));
                     char second = caracPlayfair.get(positionPlayfair.indexOf(lineSecond + colSecond));
-                    newMsg += first + second;
+                    newMsg += "" + first + second;
                 } else {
                 // Sur la même ligne, mais pas sur la même colonne
                 // On prend la lettre à droite
@@ -167,7 +167,7 @@ public class PlayfairCipher {
 
                     char first = caracPlayfair.get(positionPlayfair.indexOf(lineFirst + colFirst));
                     char second = caracPlayfair.get(positionPlayfair.indexOf(lineSecond + colSecond));
-                    newMsg += first + second;
+                    newMsg += "" + first + second;
                 }
             }
 

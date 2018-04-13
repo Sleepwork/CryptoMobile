@@ -177,7 +177,7 @@ public class HillCipher {
 
                 if( (index=chars.indexOf(c))!=-1 )
                     result.append(replace.charAt(index));
-                else if(96 < ascii && ascii < 127)
+                else
                     result.append(c);
             }
         }

@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         methode.setTextOff("Déchiffrer");
         methode.setChecked(true);
 
-        // Indication de l'alphabet utilisé par l'algo (césar -> Alaphabet 1)
-        message.setHint("Message (Alphabet 1)");
+        // Indication de l'alphabet utilisé par l'algo (césar -> Table ASCII)
+        message.setHint("Message (Table ASCII)...");
 
         // Booléen indiquant si un algo de chiffrement a été sélectionné
         anySwitchChecked = true;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    message.setHint("Message (Alphabet 1)");
+                    message.setHint("Message (Table ASCII)...");
                     resultat.setText("");
 
                     vigenere.setChecked(false);
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    message.setHint("Message (Alphabet 1)");
+                    message.setHint("Message (Table ASCII)...");
                     resultat.setText("");
 
                     cesar.setChecked(false);
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    message.setHint("Message (Alphabet 2)");
+                    message.setHint("Message (Lettres)...");
                     resultat.setText("");
 
                     cesar.setChecked(false);
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    message.setHint("Message (Alphabet 2)");
+                    message.setHint("Message (Table ASCII)...");
                     resultat.setText("");
 
                     cesar.setChecked(false);
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    message.setHint("Message (Alphabet 2)");
+                    message.setHint("Message (Lettres)...");
                     resultat.setText("");
 
                     cesar.setChecked(false);
@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    message.setHint("Message (Alphabet 1)");
+                    message.setHint("Message (Table ASCII)...");
                     resultat.setText("");
 
                     cesar.setChecked(false);
@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    message.setHint("Message (Alphabet 2)");
+                    message.setHint("Message (Lettres)...");
                     resultat.setText("");
 
                     cesar.setChecked(false);
@@ -439,12 +439,17 @@ public class MainActivity extends AppCompatActivity {
 
                     //--PLAYFAIR--//
                     if(playfair.isChecked()){
-                        if(methode.isChecked()){
-                            try {
-                                chiffrerPlayfair(message.getText().toString(), cle.getText().toString());
-                            } catch (Exception e) {
-                                Toast.makeText(getApplicationContext(), "Une erreur est survenue.", Toast.LENGTH_LONG).show();
-                                Log.w("MainActivity Error", "playfair " + e.getMessage());
+                        if (methode.isChecked()) {
+                            if(onlyLetters()) {
+                                try {
+                                    chiffrerPlayfair(message.getText().toString(), cle.getText().toString());
+                                } catch (Exception e) {
+                                    Toast.makeText(getApplicationContext(), "Une erreur est survenue.", Toast.LENGTH_LONG).show();
+                                    Log.w("MainActivity Error", "playfair " + e.getMessage());
+                                }
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Pour ce chiffrement, le message et la clé ne doivent contenir que des lettres (sans espace pour la clé)", Toast.LENGTH_LONG).show();
+                                Log.w("MainActivity Warning", "playfair mauvais alphabet");
                             }
                         } else {
                             try {
@@ -460,11 +465,16 @@ public class MainActivity extends AppCompatActivity {
                     //--HOMOPHONIQUE--//
                     if(homophone.isChecked()){
                         if(methode.isChecked()){
-                            try {
-                                chiffrerPolybe(message.getText().toString(),cle.getText().toString());
-                            } catch (Exception e) {
-                                Toast.makeText(getApplicationContext(), "Une erreur est survenue.", Toast.LENGTH_LONG).show();
-                                Log.w("MainActivity Error", "homophonique " + e.getMessage());
+                            if(onlyLetters()) {
+                                try {
+                                    chiffrerPolybe(message.getText().toString(), cle.getText().toString());
+                                } catch (Exception e) {
+                                    Toast.makeText(getApplicationContext(), "Une erreur est survenue.", Toast.LENGTH_LONG).show();
+                                    Log.w("MainActivity Error", "homophonique " + e.getMessage());
+                                }
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Pour ce chiffrement, le message et la clé ne doivent contenir que des lettres (sans espace pour la clé)", Toast.LENGTH_LONG).show();
+                                Log.w("MainActivity Warning", "homophonique mauvais alphabet");
                             }
                         } else {
                             try {
@@ -499,13 +509,18 @@ public class MainActivity extends AppCompatActivity {
 
                     //--DELASTELLE--//
                     if(delastelle.isChecked()){
-                        if(methode.isChecked()){
-                            try {
-                                int longueur = Integer.parseInt(cle2.getText().toString());
-                                chiffrerDelastelle(message.getText().toString(),cle.getText().toString(), longueur);
-                            } catch (Exception e) {
-                                Toast.makeText(getApplicationContext(), "Une erreur est survenue.", Toast.LENGTH_LONG).show();
-                                Log.w("MainActivity Error", "delastelle " + e.getMessage());
+                        if (methode.isChecked()) {
+                            if(onlyLetters()) {
+                                try {
+                                    int longueur = Integer.parseInt(cle2.getText().toString());
+                                    chiffrerDelastelle(message.getText().toString(), cle.getText().toString(), longueur);
+                                } catch (Exception e) {
+                                    Toast.makeText(getApplicationContext(), "Une erreur est survenue.", Toast.LENGTH_LONG).show();
+                                    Log.w("MainActivity Error", "delastelle " + e.getMessage());
+                                }
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Pour ce chiffrement, le message et la clé ne doivent contenir que des lettres (sans espace pour la clé)", Toast.LENGTH_LONG).show();
+                                Log.w("MainActivity Warning", "delastelle mauvais alphabet");
                             }
                         } else {
                             try {
@@ -637,5 +652,44 @@ public class MainActivity extends AppCompatActivity {
         String msgDechiffrer = DelastelleCipher.delastelle(message, cle, longueur, false);
         Log.i("Delastelle", msgDechiffrer);
         resultat.setText(msgDechiffrer);
+    }
+
+    //Fonction pour connaitre si le msg ne contient que des lettres (-> appartient à l'alphabet 2)
+    public boolean onlyLetters(){
+
+        // Initialisation du booléen à vrai (lettres uniquement)
+        boolean isOnlyLetters = true;
+
+        // Récupération du msg et de la clé
+        String msg = message.getText().toString().toLowerCase();
+        msg = msg.replace(" ", "");
+
+        String laCle = cle.getText().toString().toLowerCase();
+
+        // Entier pour boucler
+        int i = 0;
+
+        // Parcours de chaque carac. du message et de la clé
+        // Lorsqu'on détecte autre chose qu'une lettre, le booléen passe à faux (-> appartient à la Table ASCII)
+        while(i < msg.length() && isOnlyLetters){
+            int ascii = msg.charAt(i);
+
+            if(96 >= ascii || ascii >= 123)
+                isOnlyLetters = false;
+
+            i++;
+        }
+
+        i=0;
+        while(i < laCle.length() && isOnlyLetters){
+            int ascii = laCle.charAt(i);
+
+            if(96 >= ascii || ascii >= 123)
+                isOnlyLetters = false;
+
+            i++;
+        }
+
+        return isOnlyLetters;
     }
 }
