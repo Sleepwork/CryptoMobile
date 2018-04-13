@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.futloo.cryptomobile.MainActivity">-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -13,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:scrollbars="vertical">
 
@@ -34,28 +27,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:text="Transposition" />
+                    android:text="@string/transposition" />
 
                 <Switch
                     android:id="@+id/sDelastelle"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:text="Delastelle" />
+                    android:text="@string/delastelle" />
 
                 <Switch
                     android:id="@+id/sHomophone"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:text="Homophonique" />
+                    android:text="@string/homophonique" />
 
                 <Switch
                     android:id="@+id/sHill"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:text="Hill" />
+                    android:text="@string/hill" />
             </LinearLayout>
 
             <LinearLayout
@@ -69,28 +62,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:text="DES" />
+                    android:text="@string/des" />
 
                 <Switch
                     android:id="@+id/sCesar"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:text="César" />
+                    android:text="@string/cesar" />
 
                 <Switch
                     android:id="@+id/sVigenere"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:text="Vigenère" />
+                    android:text="@string/vigenere" />
 
                 <Switch
                     android:id="@+id/sPlayfair"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:text="Playfair" />
+                    android:text="@string/playfair" />
             </LinearLayout>
 
         </LinearLayout>
@@ -112,7 +105,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="ToggleButton" />
+                    android:textOff="@string/methode_off"
+                    android:textOn="@string/methode_on"
+                    android:checked="true"/>
 
                 <TextView
                     android:id="@+id/tv_Message"
@@ -120,7 +115,7 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
-                    android:text="Quel est votre message?"
+                    android:text="@string/message_text"
                     android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
                 <EditText
@@ -128,8 +123,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Message..."
-                    android:singleLine="true" />
+                    android:hint="@string/cle_text"
+                    android:maxLines="1" />
 
                 <TextView
                     android:id="@+id/tv_clé"
@@ -137,7 +132,7 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
-                    android:text="Quel est votre clé?"
+                    android:text="@string/cle_text"
                     android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
                 <EditText
@@ -145,19 +140,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Mot..."
+                    android:hint="@string/cle_hint"
                     android:maxLength="128"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
                 <EditText
                     android:id="@+id/et_clé2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Entier..."
+                    android:hint="@string/cle2_hint"
                     android:inputType="numberSigned"
                     android:maxLength="3"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
             </LinearLayout>
 
@@ -173,10 +168,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
-                    android:hint="1,1"
+                    android:hint="@string/int1_hint"
                     android:inputType="numberSigned"
                     android:maxLength="3"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
                 <EditText
                     android:id="@+id/et_int2"
@@ -184,9 +179,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
-                    android:hint="1,2"
+                    android:hint="@string/int2_hint"
                     android:inputType="numberSigned"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
                 <EditText
                     android:id="@+id/et_int3"
@@ -194,10 +189,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
-                    android:hint="2,1"
+                    android:hint="@string/int3_hint"
                     android:inputType="numberSigned"
                     android:maxLength="3"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
 
                 <EditText
                     android:id="@+id/et_int4"
@@ -205,10 +200,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
-                    android:hint="2,2"
+                    android:hint="@string/int4_hint"
                     android:inputType="numberSigned"
                     android:maxLength="3"
-                    android:singleLine="true" />
+                    android:maxLines="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -226,7 +221,7 @@
                     android:layout_weight="1"
                     android:elevation="1dp"
                     android:onClick="DoSomething"
-                    android:text="OK" />
+                    android:text="@string/btn_ok" />
 
                 <EditText
                     android:id="@+id/et_resultat"
@@ -234,21 +229,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:editable="false"
-                    android:focusable="false"
+                    android:inputType="none"
                     android:ems="10"
-                    android:hint="Résultat..." />
+                    android:focusable="false"
+                    android:hint="@string/resultat_hint" />
 
             </LinearLayout>
-
-            <!--<Switch
-            android:id="@+id/sMethode"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_below="@+id/sDes"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text="Méthode" />-->
 
         </LinearLayout>
 

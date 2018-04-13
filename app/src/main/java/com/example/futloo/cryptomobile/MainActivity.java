@@ -62,9 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Toggle Bouton pour choisir entre chiffrer (par défaut) ou déchiffrer
         methode = (ToggleButton) findViewById(R.id.tbtnMethode);
-        methode.setTextOn("Chiffrer");
-        methode.setTextOff("Déchiffrer");
-        methode.setChecked(true);
 
         // Indication de l'alphabet utilisé par l'algo (césar -> Table ASCII)
         message.setHint("Message (Table ASCII)...");

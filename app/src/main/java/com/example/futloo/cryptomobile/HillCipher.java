@@ -161,7 +161,6 @@ public class HillCipher {
 
             // Variable pour le carac. et sa valeur ascii
             char c;
-            int ascii;
 
             // Carac. spéciaux et leur remplacement
             String chars= "àâäéèêëîïôöùûüç";
@@ -173,7 +172,6 @@ public class HillCipher {
              */
             for(int i=0; i<formatMsg.length(); i++) {
                 c = formatMsg.charAt(i);
-                ascii = c;
 
                 if( (index=chars.indexOf(c))!=-1 )
                     result.append(replace.charAt(index));

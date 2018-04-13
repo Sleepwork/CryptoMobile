@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">CryptoMobile</string>
+    <string name="resultat_hint">Résultat...</string>
+    <string name="btn_ok">OK</string>
+    <string name="int4_hint">2,2</string>
+    <string name="int3_hint">2,1</string>
+    <string name="int2_hint">1,2</string>
+    <string name="int1_hint">1,1</string>
+    <string name="cle2_hint">Entier...</string>
+    <string name="cle_hint">Mot...</string>
+    <string name="cle_text">Quel est votre clé?</string>
+    <string name="message_hint">Message...</string>
+    <string name="message_text">Quel est votre message?</string>
+    <string name="methode_off">Déchiffrer</string>
+    <string name="methode_on">Chiffrer</string>
+    <string name="playfair">Playfair</string>
+    <string name="des">DES</string>
+    <string name="hill">Hill</string>
+    <string name="cesar">César</string>
+    <string name="vigenere">Vigenère</string>
+    <string name="homophonique">Homophonique</string>
+    <string name="delastelle">Delastelle</string>
+    <string name="transposition">Transposition</string>
 </resources>
