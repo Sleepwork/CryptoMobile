@@ -1,9 +1,3 @@
-<!--
-    Projet Sécurité (cryptographie)
-    ZANTARI Laurent  36005825
-    FUTLOO Ayman     34001152
--->
-
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
